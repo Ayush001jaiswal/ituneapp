@@ -1,20 +1,30 @@
 import React from 'react';
-import './ItuneSearch.css';
+import styled from 'styled-components';
+
+const StyledItemSearch = styled.div `
+	float: right;
+`;
+
+const Input = styled.input `
+	padding: 6px;
+  	border: none;
+ 	margin-top: 8px;
+  	margin-right: 20px; 
+  	font-size: 17px;
+`;
 
 
 const ituneSearch = props => (
-	<div className="ituneSearch">
-	    <div className="search-container">
-		    <form>
-				<input 
-					onKeyPress={props.search} 
-					type="text" 
-					ref={props.searchInput} 
-					placeholder="Search.." 
-				/>
-			</form>	
-		</div>
-	</div>
+	<StyledItemSearch>
+        <form>
+			<Input 
+				onKeyPress={props.search} 
+				type="text" 
+				ref={props.searchInput} 
+				placeholder="Search.." 
+			/>
+		</form>	
+	</StyledItemSearch>
 );
 
 export default ituneSearch;

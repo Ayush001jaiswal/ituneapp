@@ -1,9 +1,18 @@
 import React from 'react';
-import './FavouriteLists.css'; 
-import FavouriteList from './FavouriteList/FavouriteList'
+import FavouriteList from './FavouriteList/FavouriteList';
+import styled from 'styled-components';
 
 const favouriteLists = props => {
 	
+	const StyledFavouriteLists = styled.div `
+		&:after {
+			content: "";
+  			clear: both;
+  			display: table;
+		}	
+	`;
+
+
 	const favouriteListDetails = props.sendfavouriteList.map((items, key) => {
 		return( 
 			<FavouriteList 
@@ -16,9 +25,9 @@ const favouriteLists = props => {
 	}); 
 
 	return (
-		<div className="FavouriteLists-row">
+		<StyledFavouriteLists>
 			 {favouriteListDetails}
-		</div>
+		</StyledFavouriteLists>
 	);
 }
 

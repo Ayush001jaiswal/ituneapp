@@ -1,6 +1,14 @@
 import React from 'react';
-import './ItuneSearchLists.css';
 import ItuneSearchList from './ItuneSearchList/ItuneSearchList';
+import styled from 'styled-components';
+
+const StyledSearchLists = styled.div `
+    &:after {
+  		content: "";
+  		clear: both;
+  		display: table;
+	}
+`;
 
 
 const ItuneSearchLists = props => {
@@ -17,9 +25,9 @@ const ItuneSearchLists = props => {
 	});
 
 	return(
-		<div className="ituneSearchLists-row">
+		<StyledSearchLists>
 			{serachLists}
-		</div>
+		</StyledSearchLists>
 	);
 }	
 

@@ -1,19 +1,34 @@
 import React from 'react';
-import './FavouriteList.css'; 
 import { Button, Container, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
+
+const StyledFavouriteList = styled.div `
+	float: left;
+    width: 25%;
+    padding: 20px;
+    box-sizing: border-box;
+    
+    Button {
+    	margin: 10px;
+    }
+
+    img {
+    	width:90%;
+
+    }
+`;
 
 const FavouriteList = props => {
 	
 	const imageUrl = props.sendfavouriteList.artworkUrl100;
 	return (
-		<div className="FavouriteList-column">
+		<StyledFavouriteList>
 			<Container>
                 <Row>
        				<Col>
 						<img onClick={props.playSong} 
 							src={imageUrl} 
 							alt="" 
-							style={{width: '90%' }} 
 						/>
 					</Col>
 				</Row>
@@ -24,7 +39,7 @@ const FavouriteList = props => {
                     </Col>  
                 </Row>
 		    </Container>
-		</div>
+		</StyledFavouriteList>
 		
 	);
 }

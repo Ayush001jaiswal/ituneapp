@@ -1,10 +1,38 @@
 import React, {Component} from 'react';
-import './Home.css';
 import axios from 'axios';
 import ItuneSearch from '../../components/Search/ItuneSearch/ItuneSearch';
 import ItuneSearchLists from '../../components/Search/ItuneSearch/ItuneSearchLists/ItuneSearchLists';
 import FavouriteLists from '../../components/FavouriteLists/FavouriteLists';
 import {Link, Route, Switch, Redirect} from 'react-router-dom';
+import styled from 'styled-components';
+
+
+const StyledNavbar =  styled.div  `
+	overflow: hidden;
+  	background-color: #e9e9e9;
+
+  	a {
+  		float: left;
+  		display: block;
+  		color: black;
+  		text-align: center;
+  		padding: 14px 16px;
+  		text-decoration: none;
+  		font-size: 17px;
+
+  	}
+
+  	& a:hover {
+  		background-color: #ddd;
+  		color: black;
+  	}
+
+  	& a:active {
+  		background-color: #2196F3;
+  		color: white;	
+	}
+ 
+`;
 
 class Home extends Component {
 
@@ -69,16 +97,16 @@ class Home extends Component {
 	render() {
 		return(
 			<div className="Home">
-				<div className="Navbar">
-					<Link className="active" to="/">Home</Link>
-					<Link className="active" to="/favourite">Favourite List</Link>
-					<Route path="/" exact>
-						<ItuneSearch 
-							searchInput={this.searchInput} 
-							search={this.searchHandler} 
-						/>
-					</Route>
-				</div>
+				<StyledNavbar>
+					<Link  to="/">Home</Link>
+					<Link  to="/favourite">Favourite List</Link>
+						<Route path="/" exact>
+							<ItuneSearch 
+								searchInput={this.searchInput} 
+								search={this.searchHandler} 
+							/>
+						</Route>
+				</StyledNavbar>
 				
 				{ this.state.message ? 
 					(<p style={{color:'red'}}>Please first stop the previous audio</p>): 

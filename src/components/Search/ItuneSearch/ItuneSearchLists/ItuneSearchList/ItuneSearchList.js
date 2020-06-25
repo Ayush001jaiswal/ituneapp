@@ -1,7 +1,23 @@
 import React from 'react';
-import './ItuneSearchList.css';
 import moment from 'moment';
 import { Button, Container, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
+
+const StyledSearchList = styled.div `
+    float: left;
+    width: 25%;
+    padding: 20px;
+
+    Button {
+        margin: 10px;
+    }
+
+    img {
+        width: 80%;
+    }
+
+`; 
+
 
 const ituneSearchList = props => {
 	
@@ -9,7 +25,7 @@ const ituneSearchList = props => {
     const formattedDate = moment(props.searchList.releaseDate).format('DD MMM YY');
 
     return (
-        <div className="ituneSearchList-column">
+        <StyledSearchList>
             <Container>
                 <Row> 
                     { imageUrl ?
@@ -18,7 +34,6 @@ const ituneSearchList = props => {
                                 onClick={props.playSong} 
                                 src={imageUrl} 
                                 alt="" 
-                                style={{width: '80%' }} 
                             />
                         </Col>
                     : '' }
@@ -30,7 +45,7 @@ const ituneSearchList = props => {
                     </Col>  
                 </Row>
             </Container>
-        </div>
+        </StyledSearchList>
     );
 }
 
