@@ -12,7 +12,6 @@ const StyledSearchLists = styled.div `
 
 
 const ItuneSearchLists = props => {
-	    
     const serachLists = props.searchResults.map((items, key) => {
 		return( 
 			<ItuneSearchList 
@@ -29,9 +28,11 @@ const ItuneSearchLists = props => {
 			{serachLists}
 		</StyledSearchLists>
 	);
-}	
+}
+
 
 export default ItuneSearchLists;
+
 
 
 

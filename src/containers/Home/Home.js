@@ -5,6 +5,7 @@ import ItuneSearchLists from '../../components/Search/ItuneSearch/ItuneSearchLis
 import FavouriteLists from '../../components/FavouriteLists/FavouriteLists';
 import {Link, Route, Switch, Redirect} from 'react-router-dom';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
 
 
 const StyledNavbar =  styled.div  `
@@ -94,7 +95,7 @@ class Home extends Component {
 	}
 
 	
-	render() {
+	render() { 
 		return(
 			<div className="Home">
 				<StyledNavbar>
@@ -122,7 +123,8 @@ class Home extends Component {
 					<ItuneSearchLists 
 						playSong={this.playSongHandler} 
 						addToFavouriteList={this.addToFavouriteList} 
-						searchResults={this.state.searchResults} />
+						searchResults={this.state.searchResults} 
+					/>
 				</Route>
 					
 				<Route path="/favourite">
@@ -134,8 +136,23 @@ class Home extends Component {
 				</Route>
 			</div>	
 		);
+		
 	}
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+    	searchResult: state.searchResults,
+    	error: state.error
+    };
+};
 
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSearchHandler: (searchInput) => dispatch({type: 'onSearch', searchInput:searchInput})
+    }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
